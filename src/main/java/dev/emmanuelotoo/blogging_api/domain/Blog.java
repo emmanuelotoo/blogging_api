@@ -1,4 +1,4 @@
-package dev.emmanuelotoo.blogging_api;
+package dev.emmanuelotoo.blogging_api.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +21,7 @@ public class Blog {
     public Blog() { // my default constructor
     }
 
+    // Constructors, getters and setters
     public Blog(String title, String content, String category, ArrayList<String> tags) {
         this.title = title;
         this.content = content;
@@ -68,6 +69,7 @@ public class Blog {
         this.tags = tags;
     }
 
+    // Overriding the equals() and hashCode() methods
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
