@@ -3,6 +3,7 @@ package dev.emmanuelotoo.blogging_api.services;
 import dev.emmanuelotoo.blogging_api.domain.Blog;
 import dev.emmanuelotoo.blogging_api.dtos.NewBlogDto;
 import dev.emmanuelotoo.blogging_api.repositories.BlogRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +43,20 @@ public class BlogService {
     public void deleteBlog(Integer id) {
         blogRepository.deleteById(id);
     }
+
+    //Updating a blog post
+    public Blog updateBlog(Integer id, NewBlogDto blogDto) {
+        Blog blog = blogRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Blog with id" + id + "not found"));
+
+        blog.setTitle(blogDto.title());
+        blog.setContent(blogDto.content());
+        blog.setCategory(blogDto.category());
+        blog.setTags(blogDto.tags());
+
+        return blogRepository.save(blog);
+    }
+
 
 
 }
