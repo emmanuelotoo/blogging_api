@@ -4,6 +4,8 @@ import dev.emmanuelotoo.blogging_api.entity.Blog;
 import dev.emmanuelotoo.blogging_api.dtos.NewBlogDto;
 import dev.emmanuelotoo.blogging_api.repositories.BlogRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public class BlogService {
     }
 
     //Creating a new blog post
-    public Blog saveBlog(NewBlogDto blogDto) {
+    public ResponseEntity<Blog> saveBlog(NewBlogDto blogDto) {
 
         Blog blog = new Blog();
         blog.setTitle(blogDto.title());
@@ -26,7 +28,9 @@ public class BlogService {
         blog.setCategory(blogDto.category());
         blog.setTags(blogDto.tags());
 
-        return blogRepository.save(blog);
+        Blog savedBlog = blogRepository.save(blog);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedBlog);
     }
 
     //Getting all the blog posts

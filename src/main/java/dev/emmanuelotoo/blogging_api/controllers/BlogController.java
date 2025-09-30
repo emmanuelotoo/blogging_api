@@ -23,7 +23,7 @@ public class BlogController {
     // Creating a new blog post
     @PostMapping("/posts")
     public ResponseEntity<Blog> saveBlog(@RequestBody NewBlogDto blogDto) {
-        Blog savedBlog = blogService.saveBlog(blogDto);
-        return ResponseEntity.ok(savedBlog);
+         return blogService.saveBlog(blogDto);
     }
+
 }
