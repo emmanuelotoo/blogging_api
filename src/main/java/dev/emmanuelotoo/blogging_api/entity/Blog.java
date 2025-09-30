@@ -1,4 +1,4 @@
-package dev.emmanuelotoo.blogging_api.domain;
+package dev.emmanuelotoo.blogging_api.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Blog {
     private String category;
     private ArrayList<String> tags;
 
-    public Blog() { // my default constructor
+    public Blog() { // my default constructor required by JPA
     }
 
     // Constructors, getters and setters

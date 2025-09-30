@@ -1,6 +1,6 @@
 package dev.emmanuelotoo.blogging_api.services;
 
-import dev.emmanuelotoo.blogging_api.domain.Blog;
+import dev.emmanuelotoo.blogging_api.entity.Blog;
 import dev.emmanuelotoo.blogging_api.dtos.NewBlogDto;
 import dev.emmanuelotoo.blogging_api.repositories.BlogRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -47,7 +47,7 @@ public class BlogService {
     //Updating a blog post
     public Blog updateBlog(Integer id, NewBlogDto blogDto) {
         Blog blog = blogRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Blog with id" + id + "not found"));
+        .orElseThrow(() -> new EntityNotFoundException("Blog with id" + id + " not found"));
 
         blog.setTitle(blogDto.title());
         blog.setContent(blogDto.content());
@@ -57,6 +57,11 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
-
-
+    //Searching for blogs by a search term
+    public List<Blog> searchBlogs(String searchTerm) {
+        if (searchTerm == null || searchTerm.trim().isEmpty()) {
+            return blogRepository.findAll();
+        }
+        return blogRepository.findBySearchTerm(searchTerm.trim());
+    }
 }
