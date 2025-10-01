@@ -1,12 +1,11 @@
 package dev.emmanuelotoo.blogging_api.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 public class Blog {
@@ -16,13 +15,16 @@ public class Blog {
     private String title;
     private String content;
     private String category;
-    private ArrayList<String> tags;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "JSON")
+    private List<String> tags;
 
     public Blog() { // my default constructor required by JPA
     }
 
     // Constructors, getters and setters
-    public Blog(String title, String content, String category, ArrayList<String> tags) {
+    public Blog(String title, String content, String category, List<String> tags) {
         this.title = title;
         this.content = content;
         this.category = category;
@@ -61,11 +63,11 @@ public class Blog {
         this.category = category;
     }
 
-    public ArrayList<String> getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(ArrayList<String> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
