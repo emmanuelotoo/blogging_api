@@ -1,4 +1,5 @@
-Blogging API
+# Blogging API
+
 RESTful API with basic CRUD operations for a blogging platform.
 
 Installation and Setup
