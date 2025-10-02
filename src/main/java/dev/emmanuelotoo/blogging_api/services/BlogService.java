@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,16 +51,43 @@ public class BlogService {
 
     //Updating a blog post
     public Blog updateBlog(Integer id, NewBlogDto blogDto) {
+
         Blog blog = blogRepository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Blog with id" + id + " not found"));
 
-        blog.setTitle(blogDto.title());
-        blog.setContent(blogDto.content());
-        blog.setCategory(blogDto.category());
-        blog.setTags(blogDto.tags());
+
+        // Check if title is empty or null, if so, retain the existing content
+        String title = blogDto.title().trim().isEmpty() ? blog.getTitle() : blogDto.title();
+        blog.setTitle(title);
+
+
+        // Check if content is empty or null, if so, retain the existing content
+        String content = blogDto.content().trim().isEmpty() ? blog.getContent() : blogDto.content();
+        blog.setContent(content);
+
+
+        // Check if category is empty or null, if so, retain the existing category
+        String category = blogDto.category().trim().isEmpty() ? blog.getCategory() : blogDto.category();
+        blog.setCategory(category);
+
+
+
+
+        // Adding new tags to the existing tags instead of replacing them
+
+        List<String> tags = new ArrayList<>(blog.getTags());
+
+        for(String tag : blogDto.tags()) {
+            if (!tags.contains(tag)) {
+                tags.add(tag);
+            }
+        }
+
+        blog.setTags(tags);
 
         return blogRepository.save(blog);
     }
+
 
     //Searching for blogs by a search term
     public List<Blog> searchBlogs(String searchTerm) {

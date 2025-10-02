@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/v1")
-public class BlogController {
+    @RestController
+    @RequestMapping("/api/v1")
+    public class BlogController {
 
-    private final BlogService blogService;
+        private final BlogService blogService;
 
-    public BlogController(BlogService blogService) {
-        this.blogService = blogService;
-    }
+        public BlogController(BlogService blogService) {
+            this.blogService = blogService;
+        }
 
     // Creating a new blog post - working correctly with status codes
     @PostMapping("/post")
