@@ -49,7 +49,9 @@ Using a REST client like Postman or your browser:
 ```json
 {
   "title": "My First Post",
-  "content": "This is the content of my first blog post."
+  "content": "This is the content of my first blog post.",
+  "category": "Technology",
+  "tags": [ "tag 1", "tag 2" ]
 }
 ```
 ```
