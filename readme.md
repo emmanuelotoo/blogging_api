@@ -34,7 +34,7 @@ Available Endpoints
 Posts
 - `GET /api/posts` - Get all posts
 - `GET /api/posts/{id}` - Get post by ID
-- `POST /api/posts` - Create a new post
+- `POST /api/post` - Create a new post
 - `PUT /api/posts/{id}` - Update an existing post
 - `DELETE /api/posts/{id}` - Delete a post
 
@@ -43,7 +43,7 @@ Using a REST client like Postman or your browser:
 
 **Create a new post:**
 - Method: `POST`
-- URL: `http://localhost:8080/api/posts`
+- URL: `http://localhost:8080/api/post`
 - Headers: `Content-Type: application/json`
 - Body:
 ```json
