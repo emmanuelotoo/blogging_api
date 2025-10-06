@@ -1,8 +1,8 @@
-package dev.emmanuelotoo.blogging_api.services;
+package dev.emmanuelotoo.blogging_api.service;
 
 import dev.emmanuelotoo.blogging_api.entity.Blog;
-import dev.emmanuelotoo.blogging_api.dtos.NewBlogDto;
-import dev.emmanuelotoo.blogging_api.repositories.BlogRepository;
+import dev.emmanuelotoo.blogging_api.dto.NewBlogDto;
+import dev.emmanuelotoo.blogging_api.repository.BlogRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

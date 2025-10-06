@@ -1,4 +1,4 @@
-package dev.emmanuelotoo.blogging_api.repositories;
+package dev.emmanuelotoo.blogging_api.repository;
 
 import dev.emmanuelotoo.blogging_api.entity.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;

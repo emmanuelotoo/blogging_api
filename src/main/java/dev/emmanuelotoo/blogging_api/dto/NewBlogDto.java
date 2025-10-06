@@ -1,4 +1,4 @@
-package dev.emmanuelotoo.blogging_api.dtos;
+package dev.emmanuelotoo.blogging_api.dto;
 
 import java.util.ArrayList;
 

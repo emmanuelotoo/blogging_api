@@ -1,9 +1,9 @@
-package dev.emmanuelotoo.blogging_api.controllers;
+package dev.emmanuelotoo.blogging_api.controller;
 
 
-import dev.emmanuelotoo.blogging_api.dtos.NewBlogDto;
+import dev.emmanuelotoo.blogging_api.dto.NewBlogDto;
 import dev.emmanuelotoo.blogging_api.entity.Blog;
-import dev.emmanuelotoo.blogging_api.services.BlogService;
+import dev.emmanuelotoo.blogging_api.service.BlogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
