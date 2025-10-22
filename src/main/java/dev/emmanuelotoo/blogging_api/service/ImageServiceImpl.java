@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -34,9 +33,12 @@ public class ImageServiceImpl implements ImageService {
 
     // Getting an image by id
     @Override
-    public ResponseEntity<Optional<Image>> getImageById(Long id) {
-        Optional<Image> image = imageRepository.findById(id);
-
-        return ResponseEntity.status(HttpStatus.OK).body(image);
+    public ResponseEntity<byte[]> getImageById(Long id) {
+        return imageRepository.findById(id)
+                .map(img -> ResponseEntity.ok()
+                        .contentType(org.springframework.http.MediaType.valueOf(img.getType()))
+                        .header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + img.getName() + "\"")
+                        .body(img.getData()))
+                .orElse(ResponseEntity.notFound().build());
     }
-}
+    }
