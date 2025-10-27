@@ -1,14 +1,14 @@
 # Blogging API
 
-RESTful API with basic CRUD operations for a blogging platform.
+RESTful API with basic CRUD operations for a blogging platform, including image upload and management functionality.
 
-Installation and Setup
+## Installation and Setup
 
-Prerequisites
-- Java 17 or higher
+### Prerequisites
+- Java 21 or higher
 - Maven 3.6 or higher
 
-Steps to Run
+### Steps to Run
 1. Clone the repository:
    ```bash
    git clone <repository-url>
@@ -27,18 +27,23 @@ Steps to Run
 
 The API will be available at `http://localhost:8080`
 
-Usage
+## Usage
 
-Available Endpoints
+### Available Endpoints
 
-Posts
-- `GET /api/posts` - Get all posts
-- `GET /api/posts/{id}` - Get post by ID
-- `POST /api/post` - Create a new post
-- `PUT /api/posts/{id}` - Update an existing post
-- `DELETE /api/posts/{id}` - Delete a post
+#### Posts
+- `GET /api/v1/posts` - Get all posts
+- `GET /api/v1/posts/{id}` - Get post by ID
+- `POST /api/v1/post` - Create a new post
+- `PUT /api/v1/posts/{id}` - Update an existing post
+- `DELETE /api/v1/posts/{id}` - Delete a post
 
-Example Request
+#### Images
+- `POST /api/v1/images/upload` - Upload an image
+- `GET /api/v1/images/{id}` - Get image by ID
+
+### Example Requests
+
 Using a REST client like Postman or your browser:
 
 **Create a new post:**
@@ -53,5 +58,4 @@ Using a REST client like Postman or your browser:
   "category": "Technology",
   "tags": [ "tag 1", "tag 2" ]
 }
-```
 ```
